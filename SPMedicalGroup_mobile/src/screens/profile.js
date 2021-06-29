@@ -48,21 +48,60 @@ export default class Profile extends Component {
             <View style={styles.main}>
                 <View style={styles.header}>
                     <Text>{'Perfil'}</Text>
-
+                </View>
                     <View style={styles.body}>
                         <Text>{this.state.email}</Text>
                         <Text>{this.state.nome}</Text>
-                    </View>
-
-
-
                     <TouchableOpacity
                         style={styles.btnLogout}
                         onPress={this.realizarLogout}>
                         <Text style={styles.btnLogoutText}>Sair</Text>
                     </TouchableOpacity>
-                </View>
+                    </View>
             </View>
         );
     }
 }
+
+const styles = StyleSheet.create({
+
+  // conteúdo da main
+  main: {
+    flex: 1,
+    backgroundColor: '#69D6F0'
+  },
+  // cabeçalho
+  header: {
+    marginLeft: 30,
+    marginTop: 12,
+  },
+
+  textheader: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    fontFamily: 'Open Sans'
+  },
+
+  body: {
+    flex: 4,
+    alignItems: 'center',
+    justifyContent: 'space-around'
+  },
+
+  btnLogout: {
+    alignItems: "center",
+    justifyContent: "center",
+    height: 80,
+    width: 240,
+    borderTopWidth: 1,
+    borderColor: "#ccc",
+    marginBottom: 50
+  },
+
+  btnLogoutText: {
+    fontSize: 20,
+    font_weight: 300,
+    fontFamily: "Open Sans",
+  }
+
+});

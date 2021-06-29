@@ -14,7 +14,7 @@ export default class Consulta extends Component{
 
 
   buscarConsultas = async () =>{
-    const resposta = await api.get('/consulta');
+    const resposta = await api.get('/minhasconsultas');
     this.setState({listaConsultas : resposta.data});
   };
 
@@ -41,7 +41,7 @@ export default class Consulta extends Component{
 
   renderItem = ({ item }) => (
 
-    <View style={styles.flatItemRow}>
+    <View style={styles.ItemConsulta}>
       <View style={styles.flatItemContainer}>
         <Text style={styles.flatItemInfo}>{Intl.DateTimeFormat('pt-BR').format(new Date(item.dataConsulta))}</Text>
         <Text style={styles.flatItemTime}>{new Date(item.dataConsulta).toLocaleTimeString()}</Text>
@@ -75,10 +75,9 @@ const styles = StyleSheet.create({
     paddingRight: 50,
     paddingLeft: 50
   },
-  flatItemRow: {
+  ItemConsulta: {
+    borderRadius: 2,
     flexDirection: 'row',
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
     marginTop: 30
   },
   flatItemContainer: {
