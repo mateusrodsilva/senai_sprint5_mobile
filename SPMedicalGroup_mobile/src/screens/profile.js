@@ -19,8 +19,8 @@ export default class Profile extends Component {
             const tokenUsuario = await AsyncStorage.getItem('tokenUsuario');
             console.warn( jwtDecode(tokenUsuario) );
       
-            if (valorToken !== null) {
-              this.setState({ nome : jwtDecode(tokenUsuario).name });
+            if (tokenUsuario !== null) {
+              this.setState({ nome : jwtDecode(tokenUsuario).name});
               this.setState({ email : jwtDecode(tokenUsuario).email });
             }
       
@@ -30,7 +30,7 @@ export default class Profile extends Component {
     };
 
     componentDidMount() {
-        this.buscarDadosStorage();
+        this.buscarDados();
     };
 
     realizarLogout = async () => {
@@ -50,8 +50,8 @@ export default class Profile extends Component {
                     <Text>{'Perfil'}</Text>
                 </View>
                     <View style={styles.body}>
-                        <Text>{this.state.email}</Text>
-                        <Text>{this.state.nome}</Text>
+                        <Text>{'Email: '} {this.state.email}</Text>
+                        <Text>{'Nome de Usuário: '} {this.state.nome}</Text>
                     <TouchableOpacity
                         style={styles.btnLogout}
                         onPress={this.realizarLogout}>

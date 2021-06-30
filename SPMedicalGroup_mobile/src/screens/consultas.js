@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
 import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
@@ -14,7 +15,15 @@ export default class Consulta extends Component{
 
 
   buscarConsultas = async () =>{
-    const resposta = await api.get('/minhasconsultas');
+
+    const token = await AsyncStorage.getItem('tokenUsuario');
+
+    const resposta = await api.get('/consulta/minhasconsultas',{
+      headers : {
+        'Authorization' : 'Bearer ' + token
+      }
+    });
+
     this.setState({listaConsultas : resposta.data});
   };
 
@@ -57,7 +66,8 @@ export default class Consulta extends Component{
 const styles = StyleSheet.create({
   main: {
     flex: 1,
-    backgroundColor: '#69D6F0'
+    backgroundColor: '#69D6F0',
+    fontFamily: 'Titillium Web'
   },
 
   header:{

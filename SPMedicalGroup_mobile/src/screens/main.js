@@ -15,13 +15,14 @@ export default class Main extends Component {
       <View style={styles.main}>
         <bottomTab.Navigator
         initialRouteName= 'Consultas'
+        
         tabBarOptions={{
             showLabel: false,
             showIcon: true,
             activeBackgroundColor: '#559CD9',
-            inactiveBackgroundColor: '#55D9D0',
+            inactiveBackgroundColor: '#55D9D7',
             activeTintColor: '#FFF',
-            inactiveTintColor: '#FFF',
+            inactiveTintColor: '#000',
             style: { height : 50 }
         }}
         screenOptions={({ route }) => ({

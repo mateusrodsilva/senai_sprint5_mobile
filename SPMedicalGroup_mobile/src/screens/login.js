@@ -34,7 +34,7 @@ export default class Login extends Component{
       return (
         <View style={styles.main}>
         <LinearGradient
-        colors={['#69D6F0','#55D9D0']}
+        colors={['#40AEC8','#55D9D0']}
         style={styles.background}>
 
           <Image 
