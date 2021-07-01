@@ -22,10 +22,10 @@ export default class Main extends Component {
             activeBackgroundColor: '#559CD9',
             inactiveBackgroundColor: '#55D9D7',
             activeTintColor: '#FFF',
-            inactiveTintColor: '#000',
             style: { height : 50 }
         }}
         screenOptions={({ route }) => ({
+
             tabBarIcon: () => {
             if (route.name === 'Consultas') {
                 return(
@@ -34,12 +34,10 @@ export default class Main extends Component {
                     style={styles.tabBarIcon}
                 />
                 )
-            }
-
-            if (route.name === 'Profile') {
-                return(
+            }else{
+              return(
                 <Image 
-                    source={require('../../assets/img/16363.png')}
+                    source={require('../../assets/img/account-avatar-profile-human-man-user-30448.png')}
                     style={styles.tabBarIcon}
                 />
                 )

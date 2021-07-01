@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
-import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
+import { FlatList, Image, StyleSheet, Text, View,ScrollView } from 'react-native';
 import api from '../services/api';
 
 
@@ -35,25 +35,24 @@ export default class Consulta extends Component{
     return(
       <View style ={styles.main}>
           <View style={styles.header}>
-            <Text>{'Consultas'}</Text>
+            <Text style={styles.headerText}>{'Consultas'}</Text>
           </View>
-          <View styles ={styles.body}>
-            <FlatList
-            contentContainerStyle={styles.mainBodyContent}
-            data={this.state.listaConsultas}
-            keyExtractor={ item => item.idConsulta }
-            renderItem={this.renderItem}/>
-          </View>
+          <ScrollView styles ={styles.body}>
+            
+              <FlatList
+              contentContainerStyle={styles.mainBodyContent}
+              data={this.state.listaConsultas}
+              keyExtractor={ item => item.idConsulta }
+              renderItem={this.renderItem}/>
+          </ScrollView>
       </View>
     );
   }
 
   renderItem = ({ item }) => (
-
     <View style={styles.ItemConsulta}>
       <View style={styles.flatItemContainer}>
-        <Text style={styles.flatItemInfo}>{Intl.DateTimeFormat('pt-BR').format(new Date(item.dataConsulta))}</Text>
-        <Text style={styles.flatItemTime}>{new Date(item.dataConsulta).toLocaleTimeString()}</Text>
+        <Text style={styles.flatItemInfo}>{Intl.DateTimeFormat('pt-BR').format(new Date(item.dataConsulta))}{' - '}{new Date(item.dataConsulta).toLocaleTimeString()}</Text>
         <Text style={styles.flatItemTitle}>{item.idMedicoNavigation.nomeMedico} {" - "} {item.idMedicoNavigation.idEspecialidadeNavigation.nomeEspecialidade}</Text>
         <Text style={styles.flatItemInfo}>{"Paciente: "}{item.idProntuarioNavigation.nomePaciente}</Text>
       </View>
@@ -67,12 +66,17 @@ const styles = StyleSheet.create({
   main: {
     flex: 1,
     backgroundColor: '#69D6F0',
-    fontFamily: 'Titillium Web'
+    fontFamily: 'Roboto'
   },
 
   header:{
     marginLeft: 30,
     marginTop: 12,
+  },
+
+  headerText:{
+    fontWeight: 'bold',
+    fontSize: 25
   },
 
   body:{
@@ -86,22 +90,20 @@ const styles = StyleSheet.create({
     paddingLeft: 50
   },
   ItemConsulta: {
-    borderRadius: 2,
     flexDirection: 'row',
     marginTop: 30
   },
   flatItemContainer: {
     flex: 1,
-    backgroundColor: '#FFF'
+    backgroundColor: '#FFF',
+    borderRadius: 5
   },
   flatItemTitle: {
-    fontSize: 16,
-    color: '#333',
-    fontFamily: 'Open Sans Light'
+    fontSize: 20
   },
+
   flatItemInfo: {
     fontSize: 12,
-    color: '#999',
     lineHeight: 20
   },
   flatItemImg: {

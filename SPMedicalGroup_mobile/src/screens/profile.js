@@ -47,11 +47,15 @@ export default class Profile extends Component {
         return(
             <View style={styles.main}>
                 <View style={styles.header}>
-                    <Text>{'Perfil'}</Text>
+                    <Text style={styles.headerText}>{'Perfil'}</Text>
                 </View>
                     <View style={styles.body}>
-                        <Text>{'Email: '} {this.state.email}</Text>
-                        <Text>{'Nome de Usuário: '} {this.state.nome}</Text>
+                        <Text style={styles.infoUserText}>{'Email: '} {this.state.email}</Text>
+                        <Text style={styles.infoUserText}>{'Nome de Usuário: '} {this.state.nome}</Text>
+
+                        <Image 
+                            source={require('../../assets/img/logo_spmedgroup_v1.png')}
+                            style={styles.mainImgLogin}/>
                     <TouchableOpacity
                         style={styles.btnLogout}
                         onPress={this.realizarLogout}>
@@ -68,7 +72,8 @@ const styles = StyleSheet.create({
   // conteúdo da main
   main: {
     flex: 1,
-    backgroundColor: '#69D6F0'
+    backgroundColor: '#69D6F0',
+    fontFamily: 'Roboto'
   },
   // cabeçalho
   header: {
@@ -76,10 +81,9 @@ const styles = StyleSheet.create({
     marginTop: 12,
   },
 
-  textheader: {
-    fontSize: 16,
+  headerText:{
     fontWeight: 'bold',
-    fontFamily: 'Open Sans'
+    fontSize: 25
   },
 
   body: {
@@ -88,20 +92,28 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around'
   },
 
+  infoUserText:{
+    fontSize: 15
+  },
+
   btnLogout: {
     alignItems: "center",
     justifyContent: "center",
     height: 80,
     width: 240,
-    borderTopWidth: 1,
-    borderColor: "#ccc",
     marginBottom: 50
   },
 
   btnLogoutText: {
     fontSize: 20,
-    font_weight: 300,
-    fontFamily: "Open Sans",
-  }
+    font_weight: 'bold',
+  },
+
+  mainImgLogin: {
+    height: 83,
+    width: 74,
+    margin: 60,
+    marginTop: 0
+}
 
 });
